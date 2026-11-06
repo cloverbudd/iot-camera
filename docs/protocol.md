@@ -1,0 +1,213 @@
+# Protocol reference — HK365/SHIX camera (device ID `HK-IOTA00376790BFJNP`)
+
+App: `com.shix.hk365` (base package `com.shix.shomecam`)
+Native lib: `libapTrans_jni.so` (from the `arm64-v8a` split APK)
+
+This camera uses the **PPPP protocol family** (also called "CS2 Network" /
+"iLnkP2P"), a white-labeled P2P transport SDK used by hundreds of cheap
+Chinese IP camera brands. Confirmed via exact native symbol names
+(`cs2p2p_PPPP_*`, `PPCS_*`) and a `"checkstr":"SHIX"` field in the device's
+own JSON response matching the publicly documented pre-shared-key (PSK)
+table for this vendor family exactly.
+
+**Essential public background reading** (read these before anything else —
+they cover ~80% of what a generic PPPP camera needs and will save re-deriving
+things already documented elsewhere):
+
+- https://palant.info/2025/11/05/an-overview-of-the-pppp-protocol-for-iot-cameras/
+  — best overview: ports, device ID format, protocol variant table, PSK table.
+- https://palant.info/2026/01/05/analysis-of-pppp-encryption/ — the exact
+  public "blanket cipher" algorithm, with a full working Python
+  implementation in the article's own comments.
+- https://github.com/magicus/pppp-dissector — `PPPP.md` (message type list,
+  frame formats) + a Wireshark Lua dissector you can run against any `.pcap`
+  capture of this protocol family.
+- https://github.com/pmarrapese/iot/tree/master/p2p — original dissector +
+  a working Python LAN-search scanner for this protocol family.
+- https://hacktricks.wiki/en/network-services-pentesting/32100-udp-pentesting-pppp-cs2-p2p-cameras.html
+
+## Channel separation
+
+- **Video is cleartext MJPEG.** No cipher at all once a session is open.
+  JPEG SOI markers (`ff d8 ff`) appear directly in the UDP payload.
+- **Only the JSON control channel (channel 0, `MSG_DRW` opcode) is
+  encrypted** — commands like `check_user`, `get_parms`, `stream`, etc.
+
+## Wire framing (confirmed via live capture + disassembly)
+
+LAN packets observed between app and camera use this literal, mostly
+**unencrypted** custom framing (brute-forced against every known PSK — none
+matched `0xf1`, confirming it's genuinely plaintext, not obfuscated):
+
+| byte0 | meaning |
+|---|---|
+| `0x11` | LAN handshake / "punch" (app→cam and cam→app) |
+| `0x0b` / `0x0c` | ack |
+| `0x0d` | DRW (data read/write) frame — carries the encrypted JSON command or raw video/audio |
+| `0x28` | cloud relay port-query request/reply (see below) |
+| `0x2c` | cloud relay registration request (this one IS encrypted, see below) |
+
+### Cloud relay rendezvous (fully solved, works today, no phone needed)
+
+Three redundant relay servers, UDP port `65200`:
+`47.242.56.11`, `125.122.23.54`, `120.78.4.128`.
+
+**Request (37 bytes)**, type `0x28`:
+```
+28 <17-byte device-identity blob, constant for this camera> <6-byte constant
+tail "22ff3401de0d"> <requester's own LAN IP, 4 raw bytes> <4-byte unknown
+constant "286ae002"> 00 <4-byte nonce, any value works>
+```
+
+**Replies** (3 distinct packet types per relay, order not guaranteed):
+
+1. 2 bytes: `28 <id>` — ack.
+2. 24 bytes: `28 02 00000000 f5fd3401 31263501 2b86c4b6 109f4b45 1611` —
+   **device-constant, not session-specific** (verified byte-identical
+   across independent queries). Purpose unclear (maybe firmware/model
+   metadata).
+3. 8 bytes: `28 <id> <port:u16 LE> <wan_ip: 4 raw bytes>` — **this value
+   changes between successive queries made just seconds apart.** Query
+   immediately before use; never cache it. Working code:
+   `scripts/cloud_query.py`.
+
+### Cloud relay registration (`0x2c`) — cipher SOLVED
+
+This specific message type IS encrypted with the public PPPP "blanket
+cipher", using PSK `"camera"` (one of three well-known default PSKs tried
+by the public dissector's heuristic: `"camera"` → magic `0x2c`, `"SHIX"` →
+magic `0x9f`, `"SSD@cs2-network."` → magic `0xb1`).
+
+Validated against a real captured packet — decrypts to exactly the
+expected universal PPPP magic byte `0xF1`:
+```
+raw: 2c494f5441d6bf0500aad6dd3083972b9a26a98639000000000000000001020000000200005a0000005a000100c0a80463
+dec: f1c35760acb2716159776b135baece9b9772d40e246adddddddddddddddcf777dddddf77dd87d9dddd87d9dcf51d120fa4
+     magic=0xf1  opcode=0xc3 (not in the public opcode table — vendor extension)
+```
+See `scripts/pppp_crypto.py` for the full working decrypt/encrypt
+implementation and the 256-byte table (extracted independently both from
+the binary directly, and from the public reference — byte-identical).
+
+The 49-byte request structure (confirmed, byte-exact from a real capture):
+```
+2c 49 4f 54 41 d6 bf 05 00 <4-byte client-generated session token>
+<first 8 bytes of the SAME device-identity blob used in that session's
+0x28 query> 00000000000000000102000000020000 5a000000 5a0001 00
+<camera's LAN IP, 4 raw bytes>
+```
+`49 4f 54 41` is literally ASCII `"IOTA"` (matches this device's DID
+prefix). The 4-byte token reappears in the client's own subsequent LAN
+handshake packet — **the token is self-generated by the client, not
+learned from the camera or relay.** Whether registering it via this `0x2c`
+packet is actually a *required* prerequisite before the camera accepts a
+handshake carrying it has not been confirmed either way — tested, got no
+camera reply, but the exact unknown middle fields of this packet
+(`0102000000020000`, `5a000000`, `5a000100`) might simply be wrong guesses
+rather than proof the whole mechanism doesn't work.
+
+## The control-channel (DRW/JSON) cipher — NOT the blanket cipher
+
+Exhaustively proved (see `docs/investigation-log.md` for the full trace)
+that the actual command channel does **not** use the public PPPP blanket
+cipher at all. The real call chain is:
+
+```
+NativeCaller.AnPanStartPPPP(did, "", "")          [Java, smali-traced — only
+                                                    the DID is passed, nothing
+                                                    else, confirming ALL
+                                                    discovery/session state
+                                                    lives in native code]
+  -> HLP2P_Connect (initMode:[5] observed in logcat)
+  -> HLP2P_Write
+  -> hl_p2p_write
+       -> e_init(ctx, key_ptr[16], table_ptr[16])
+       -> e_c_e_b(...)                             [the real cipher call]
+```
+
+This is a **different, vendor-specific, undocumented cipher** ("HLP2P"
+internally), NOT `cs2p2p__P2P_Proprietary_Encrypt`. Key facts about it:
+
+- Frame before encryption: `0x58 | 06 0a a0 80 | u32LE(json_len) | json`,
+  **zero-padded** (not PKCS#7) to `((1+framelen) & ~15) + 16` bytes.
+- `e_init(ctx, key16, table16)` takes **two** 16-byte buffers (key AND
+  table) — ruling out textbook AES-128, which takes only a key. This is an
+  AES-*shaped* but custom cipher.
+- The key/table are derived at runtime from a per-boot "init string" the
+  native library logs verbatim and unprompted to `adb logcat` (tag `HL`):
+  `p2p.initstr=DAS-<192 hex chars>`. This string is **device-bound and
+  stable across days/sessions**, not session-rotated — get it with zero
+  reversing via:
+  ```
+  adb logcat -c && adb shell am start -n com.shix.hk365/com.shix.shomecam.feature.splash.SplashActivity && sleep 12 && adb logcat -d | grep -i initstr
+  ```
+- `hl_p2p_init` strips the `DAS-` prefix, hex-decodes the remainder, and
+  feeds slices through an undocumented mixer (`m_init`/`m_u`/`m_f`) to
+  populate two `.bss` key slots that `e_init` consumes.
+- **Live-extracted via gdb** (breakpoint on `e_init`, reading `x1`/`x2`
+  register-pointed memory): the slots hold 16-byte **raw ASCII** strings
+  (not hex-decoded):
+  - p2p key slot: `099A150E83972A43`
+  - shared table slot: `06E0828810773EB0`
+  - control/`hl_encrypt` key slot: `3492A59C2FBE98E0`
+- **This gdb-extracted key did NOT decrypt real captured ciphertext**,
+  even in a tightly-synchronized (8ms-gap) fresh capture, and even after
+  cross-validating that the reimplementation of `e_init`/`e_c_e_b` is
+  byte-for-byte self-consistent with the vendor's own compiled code (via a
+  native oracle calling `hl_p2p_init()` + `hl_encrypt()` end-to-end in one
+  process). The cipher implementation is proven correct; the **key
+  material captured at `hl_p2p_init()` time is not what's actually used
+  by a live `hl_p2p_write()` call** during a real session. See
+  `STATUS.md` for why the fix needs a rooted phone.
+
+## BLE pairing (WiFi provisioning)
+
+Clearing app data (`pm clear com.shix.hk365`) forces a full re-pair, which
+sends the camera's WiFi credentials over Bluetooth LE. **This is captured
+in full by `adb bugreport`'s bundled Bluetooth HCI snoop log — no root
+needed**:
+
+```
+adb shell settings put secure bluetooth_hci_log 1
+adb shell svc bluetooth disable && adb shell svc bluetooth enable
+# ... re-pair the camera through the app UI ...
+adb bugreport out.zip
+unzip out.zip "FS/data/misc/bluetooth/logs/btsnooz_hci.log*"
+```
+
+The resulting file is standard BTSnoop format (16-byte global header, then
+per-record `orig_len/incl_len/flags/drops(4B each)+timestamp(8B)` + raw H4
+bytes: `0x01`=HCI command, `0x02`=ACL data, `0x04`=event). ACL payload
+unwraps as `[conn_handle_flags:2B LE][data_len:2B LE][l2cap_len:2B
+LE][cid:2B LE][ATT opcode + value]`; GATT ATT traffic is on CID 4.
+
+**Warning**: this pairing flow logs the camera's real WiFi password and a
+factory device password to `adb logcat` in a `pairing network info:` JSON
+line, in full plaintext. Never record or publish that value if you see it
+— redact in place.
+
+The app's own higher-level log line (`adb logcat`, search for `pairing
+network info`) already gives you the fully decoded provisioning JSON —
+decoding the raw BLE GATT chunking byte-by-byte is not necessary unless
+you suspect the camera's BLE reply carries something the app's own log
+doesn't show (not confirmed either way, started but not finished —
+handles `0x0008`/`0x000a` carry the actual chunked payload, `0x0042`/
+`0x0044` appear to be a separate ACK/flow-control layer).
+
+## Video frame format (confirmed, from public PPPP docs — matches our capture)
+
+32-byte header before each frame/frame-chunk:
+
+| field | size | notes |
+|---|---|---|
+| magic | 4 | always `0x55aa15a8` |
+| codec | 1 | `0x03` = MJPEG (confirmed on this device) |
+| type | 1 | `0`=video, `1`=audio |
+| millis | 2 | ms offset |
+| timestamp | 4 | unix seconds, LE |
+| index | 4 | frame index, LE |
+| len | 4 | frame data length, LE |
+| unknown | 12 | — |
+
+Payloads over ~1024 bytes split into multiple consecutive packets; only
+the first carries this header.
