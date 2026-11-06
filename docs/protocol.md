@@ -194,6 +194,17 @@ doesn't show (not confirmed either way, started but not finished —
 handles `0x0008`/`0x000a` carry the actual chunked payload, `0x0042`/
 `0x0044` appear to be a separate ACK/flow-control layer).
 
+## Hardware: mainboard UART header (new lead, untested)
+
+Opening the physical camera shows the mainboard (marked `X8-V1.1-26811`,
+revision v1.1 — see `docs/images/mainboard-uart-header.jpg`) has a 3-pin
+header silkscreened `TXD RXD GND` — a serial debug console, not
+referenced anywhere in the app/native-lib analysis above. This is a
+**separate, hardware-side path** that could bypass the phone entirely: if
+the console gives a boot log or shell, the session key could potentially
+be read directly from the camera's own running process. Untested as of
+this writing — see `STATUS.md` for how to try it safely (3.3V logic only).
+
 ## Video frame format (confirmed, from public PPPP docs — matches our capture)
 
 32-byte header before each frame/frame-chunk:

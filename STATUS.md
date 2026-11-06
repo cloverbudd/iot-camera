@@ -17,10 +17,50 @@ session key depends on additional entropy from the actual P2P
 handshake/punch exchange with the camera, which our standalone native
 calls never performed.
 
-## The one next step
+## NEW, possibly-faster alternative: UART on the camera's own PCB
 
-**Root the phone** (or get a rooted/debuggable test device with the same
-app), then:
+Opening the camera revealed a 3-pin header silkscreened **`TXD RXD GND`**
+directly on the mainboard (marked `X8-V1.1-26811`, v1.1). This is a serial
+debug console. On cheap IoT camera boards these are very often left
+enabled for factory debug and can give a boot log or even a root shell
+**directly on the camera**, which would let us read the session key out of
+the camera's own running process — no phone root needed at all, and no
+guessing about handshake timing either (we'd see what the camera itself
+does, not just what the app sends it).
+
+**Try this before/alongside rooting the phone — it may be the faster
+unlock:**
+
+1. Get a **3.3V-logic** USB-to-TTL/serial adapter (CP2102, CH340, FTDI —
+   confirm it's 3.3V, NOT 5V; 5V on these pins can damage the board).
+2. Wire only 3 wires, crossed: adapter `GND`↔board `GND`, adapter
+   `RXD`↔board `TXD`, adapter `TXD`↔board `RXD`. **Do not connect the
+   adapter's own 5V/VCC pin to the board** — the camera is powered
+   separately via its own USB-C port.
+3. Open a serial terminal (`screen /dev/ttyUSBx 115200`, `minicom`, or
+   PuTTY) at **115200 baud** first (most common default); if the output is
+   garbled, try 57600, 9600, then 921600.
+4. Power-cycle the camera (unplug/replug its USB-C) while the terminal is
+   open and watch for boot log output immediately — most of the useful
+   information (bootloader messages, kernel/RTOS log, sometimes a login
+   prompt) appears only in the first few seconds after power-on.
+5. If a login prompt appears, try common defaults for this device class:
+   `root`/`root`, `root`/(blank), `admin`/`admin`, `root`/`12345`.
+6. If it's read-only streaming debug/log output with no prompt, that's
+   still useful — it may show the key-derivation calls logged in plain
+   text (this SoC's vendor code logs heavily via `HL_LOG`/`__android_log_print`-
+   style calls, confirmed in `libapTrans_jni.so`; the LINUX/RTOS side
+   likely logs similarly over UART even when there's no login shell).
+
+Record whatever appears (minus any credential it reveals — see the
+redaction note in `docs/protocol.md`) and open an issue or extend this
+doc with what you find; it directly informs whether the phone-root path
+below is still necessary.
+
+## The other next step: root the phone
+
+If UART access doesn't pan out, or alongside it: **root the phone** (or
+get a rooted/debuggable test device with the same app), then:
 
 1. Install `gdbserver` on the phone (or use `frida` if you prefer — either
    works once you have root/`run-as`).
