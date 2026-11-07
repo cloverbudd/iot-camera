@@ -1,0 +1,514 @@
+[0]40 00 97 00 a8 43 12 a0
+[0]28 e0 00 00 00 00 00 00
+[0]00 00 00 00 00 00 00 00
+[0]c8 55 70 0f be 9a 66 68
+[0]88 65 89 88 70 57 00 00
+[0]80 00 9c 02 a0 23 00 00
+[0]00 0a 00 00 04 09 00 00
+[0]00 00 00 00 04 d0 04 00
+[0]00 00 00 40 00 04 40 00
+[0]04 40 00 04 40 00 04 fe
+[0]01 c1 10 0c c1 f0 0f ff
+[0]f0 0b c0 00 eb 05 03 03
+[0]ff 01 01 01 0f d4 fe 06
+[0]fe 00 fa f2 fe 1f 00 0b
+[0]00 02 41 00 00 00 00 08
+[0]00 00 00 00 00 73 1c 00
+[0]f0 3c 0f
+[0]validity: 1577000d
+
+** hgSDK-v2.5.1.7-26693, app-15, build time:Sep  1 2026 15:42:36 **
+**   libcore v2.5.1.7-26745, build time:Dec 18 2023 11:05:53
+**   libnetutils v2.5.1.7-26745, build time:Dec 18 2023 11:06:10
+**   libcommon v2.5.1.7-26745, build time:Dec 18 2023 11:05:58
+**   libosal v2.5.1.7-26745, build time:Dec 18 2023 11:05:52
+**   libatcmd v2.5.1.7-26745, build time:Dec 18 2023 11:05:59
+**   liblmac v2.5.1.7-26745, build time:Dec 18 2023 11:06:29
+**   libwifi v2.5.1.7-26745, build time:Dec 18 2023 11:06:42
+------------------------------------------------------------------
+[0] ------- system restart fault -----------
+[0][soft_reset]
+[0] ------- lvd fault -----------
+[0] ---------------------------------------
+[1]freemem:188200
+[1]custom_mem_init:2000e334
+[2]freemem after custom pool(32K):155420
+[4]skbpool init, total:14760 (0x20040658~0x20044000), max per:80%
+[4]syscfg: invalid magic_num=0, addr=fe000
+[6]syscfg_read OK!
+[6]old cfg_ver:263
+[28][VCAM] before pmu11=3ac005a4 lvd=107d3a1d after pmu11=1ac0c5a4 lvd=907d3a1d oc=0
+[29]lmac rx info size:36
+[30]GAP0 : 2003c258
+[30]GAP1 : 20040650
+[30]lmac rx buff:2003c260, size:17392, hw rx buff size:11256, ampdu:7, max subfrm:3
+[31]lmac priv: 20016764
+[31]lmac tx  : 20016af8
+[32]lmac rx  : 20017b34
+[32]lmac ble rx: 00000000
+[32]pack:8, bios_id:2
+[32]use AMPM DPD!
+[33]verf:0x8, ibpt:0x6, ibct:0x8, iref:0x6
+[33]verfvco_trim:0x8, verfcp_trim:0x5, verfdiv_trim:0x5
+[34]verfdsm_trim:0x4, verfvcc25_trim:0x1
+[34]da cap:2, da gain:2
+[37]txdcoc from:1, i:4, q:9
+[37]tx imb from:1, pm:77, gm:4
+[38]rx dcoc from:1
+[38]g:0, ana:64, i:-1, q:4
+[38]g:1, ana:64, i:-1, q:4
+[39]g:2, ana:64, i:-1, q:4
+[39]g:3, ana:64, i:-3, q:4
+[39]g:4, ana:64, i:-3, q:4
+[40]g:5, ana:64, i:-3, q:3
+[40]g:6, ana:64, i:-2, q:4
+[40]g:7, ana:64, i:-2, q:1
+[41]rx imb from:1
+[41]g:0, 8146, 4080
+[41]g:1, 8154, 4078
+[41]g:2, 8146, 4078
+[41]g:3, 8148, 4074
+[42]g:4, 8142, 4076
+[42]g:5, 8134, 4076
+[42]g:6, 8146, 4076
+[42]g:7, 8148, 4075
+[43]time offset:0, 11
+[44]lmac test: 200182dc
+[44]set_bss_bw: 20M
+[45]lmac_bgn_lo_freq_set: 2432
+[46]set rts_threshold =2304
+[46]lmac set mac0 addr:c8:55:70:0f:be:68
+[47]ADKEY baud:239
+[47]*** open ADC success!
+[47]*** add success: ADC channel cnt = 1, name:257
+[48]*** add success: ADC channel cnt = 2, name:258
+[49]lmac_bgn_lo_freq_set: 2412
+[50]lmac_bgn_lo_freq_set: 2412
+[52]set rts_threshold =1600
+[52]set ac= 0 aifs= 2 cw_min= 15 cwmax= 1023 txop= 79
+[53]set ac= 1 aifs= 6 cw_min= 15 cwmax= 1023 txop= 79
+[53]set ac= 2 aifs= 1 cw_min= 7 cwmax= 15 txop= 128
+[54]set ac= 3 aifs= 1 cw_min= 3 cwmax= 7 txop= 65
+[55]set ac= 0 aifs= 2 cw_min= 15 cwmax= 1023 txop= 79
+[55]set ac= 1 aifs= 6 cw_min= 15 cwmax= 1023 txop= 79
+[56]set ac= 2 aifs= 1 cw_min= 7 cwmax= 15 txop= 128
+[56]set ac= 3 aifs= 1 cw_min= 3 cwmax= 7 txop= 65
+[57]lmac set mac0 addr:c8:55:70:0f:be:68
+[57]lmac_bgn_lo_freq_set: 2427
+[59]set ac= 0 aifs= 1 cw_min= 1 cwmax= 3 txop= 0
+[59]set ac= 1 aifs= 1 cw_min= 1 cwmax= 3 txop= 0
+[60]set ac= 2 aifs= 1 cw_min= 1 cwmax= 3 txop= 0
+[61]set ac= 3 aifs= 1 cw_min= 1 cwmax= 3 txop= 0
+[61]lmac_bgn_lo_freq_set: 2427
+[63]vif1 state WPA_DISCONNECTED -> WPA_AUTHENTICATING
+[64]inteface1: start connecting ...
+[64]inteface1: start scanning ...
+[64]vif1 state WPA_AUTHENTICATING -> WPA_SCANNING
+[66]add w0 interface!
+JPG start
+[67]csi_test start,iic init
+[68]iic init finish,sensor reset & set sensor clk into 6M
+hgdvp_set_baudrate:clock:480000000
+[72]set sensor finish ,Auto Check sensor id
+[72][SENSOR_CFG] dvp_init=0 i2c_open=0 baud=0 sda_delay=-524 filter=0 strong=0 mclk6m=0
+[73][SENSOR_RST] seq=1 elapsed=0ms PWDN:H(set=-1 rd=-1)->L(set=0 rd=0) RST:H(set=-1 rd=-1)->L(set=-1 rd=-1)->H(set=0 rd=1)
+[75][SENSOR_BUS] addr_set=0 SCL=0 SDA=0
+[75]SID try=1 ret=0 id=99 expect=99 dev=42 reg=0
+[76]id =99 num:0 pass:1 elapsed:4ms
+[76]Auto Check sensor id finish
+[77]mclk:24000000MHz
+hgdvp_set_baudrate:clock:480000000
+[77]init:1806eb20 u8Addrbytnum:1,u8Databytnum:1
+[78]SENSER....init
+[105]lmac_bgn_lo_freq_set: 2437
+[135]inteface1 find new bss: fe:09:0d:2c:87:a6-SINGTEL-87A6_MLO
+[146]lmac_bgn_lo_freq_set: 2462
+[159]init table num:596
+[160]SENSR ident ok:640*480
+[GC0307] close_frame: 0xed=0 0xee=0 0xef=0 | frame len: 0x01=0x5e 0x02=0x70 0x10=0
+[163]csi init start  --
+[163]csi set size ====>640*480
+[164]csi dvp_size_set
+[164]csi IRQ init
+[164]dvpirq_register:1 1802cc9c  1802cc9c
+[165]dvpirq_register:0 1802cc88  1802cc88
+[165]vppirq_register:0 1802c9d0  1802c9d0
+[166]vppirq_register:1 1802cdfc  1802cdfc
+[166]vppirq_register:2 1802c9cc  1802c9cc
+[167]vppirq_register:3 1802cc58  1802cc58
+[167]vppirq_register:4 1802cc6c  1802cc6c
+[168]vppirq_register:5 1802c9c4  1802c9c4
+[169]vppirq_register:6 1802c9b4  1802c9b4
+[169]vppirq_register:7 1802c9a4  1802c9a4
+[169]csi IRQ init finish,start get data
+[187]lmac_bgn_lo_freq_set: 2412
+[191]inteface1 find new bss: 2c:2b:db:9c:dd:88-[REDACTED-SSID]
+[228]lmac_bgn_lo_freq_set: 2427
+[229]ieee80211_sta_select_bss:24::by SSID find [REDACTED-SSID] [2c:2b:db:9c:dd:88] at channel 1
+[230]lmac_bgn_lo_freq_set: 2412
+[232]vif1 state WPA_SCANNING -> WPA_AUTHENTICATING
+[232]inteface1: start connecting ...
+[233]inteface1: scan done!
+[265]inteface1 find new bss: 2c:2b:db:9c:dd:8b-
+[265]inteface1 find new bss: 2c:2b:db:9c:dd:85-
+[292]inteface1 find new bss: ec:75:0c:8f:0b:18-Hans_Casa
+[295]inteface1 find new bss: f2:75:0c:8f:0b:18-
+[298]inteface1 find new bss: f6:75:0c:8f:0b:18-
+[334]vif1 state WPA_AUTHENTICATING -> WPA_ASSOCIATING
+[343]set ac= 0 aifs= 3 cw_min= 15 cwmax= 1023 txop= 0
+[344]set ac= 1 aifs= 7 cw_min= 15 cwmax= 1023 txop= 0
+[344]set ac= 2 aifs= 2 cw_min= 7 cwmax= 15 txop= 94
+[345]set ac= 3 aifs= 2 cw_min= 3 cwmax= 7 txop= 47
+[345]vif1 state WPA_ASSOCIATING -> WPA_ASSOCIATED
+[346]lmac_bgn_add_sta: if:0, aid0, addr:2c:2b:db:9c:dd:88
+[347]rc_init: type= 3 mcs_mask= 0xffe
+[347]lmac_bgn_set_aid = 18
+[348]IEEE 802.1X RX: version=2 type=3 length=95
+[348]vif1 state WPA_ASSOCIATED -> WPA_4WAY_HANDSHAKE
+[349]WPA: RX message 1 of 4-Way Handshake from 2c:2b:db:9c:dd:88 (ver=2)
+[350]WPA: Sending EAPOL-Key 2/4
+[360]IEEE 802.1X RX: version=2 type=3 length=151
+[361]WPA: Decrypt Key Data using AES-UNWRAP (KEK length 16)
+[362]WPA: RX message 3 of 4-Way Handshake from 2c:2b:db:9c:dd:88 (ver=2)
+[363]WPA: Sending EAPOL-Key 4/4
+[364]hgkey: cipher= 0xfac04 flags= 0x8 keyidx= 0 keylen= 16 key=[REDACTED]
+RSN: added PMKID: [REDACTED-KEY-MATERIAL]
+[366]lmac_bgn_set_key: cmd:0, MAC:2c:2b:db:9c:dd:88
+[366]    CCMP
+[366]    PTK
+[366]    key:0
+[REDACTED-KEY-BYTES]
+[368]vif1 state WPA_4WAY_HANDSHAKE -> WPA_GROUP_HANDSHAKE
+RSN: received GTK in pairwise handshake: [REDACTED-KEY-MATERIAL]
+[370]WPA: Installing GTK to the driver (keyidx=2 tx=0 len=16)
+[370]hgkey: cipher= 0xfac04 flags= 0x100 keyidx= 2 keylen= 16 key=[REDACTED]
+RSN: added PMKID: [REDACTED-KEY-MATERIAL]
+[372]lmac_bgn_set_key: cmd:0, MAC:2c:2b:db:9c:dd:88
+[372]    CCMP
+[373]    GTK
+[373]    key:2
+[REDACTED-KEY-BYTES]
+[374]WPA: Key negotiation completed with 2c:2b:db:9c:dd:88 [PTK=CCMP GTK=CCMP]
+[375]vif1 state WPA_GROUP_HANDSHAKE -> WPA_COMPLETED(!)
+[378]inteface1: sta 2c:2b:db:9c:dd:88 connected
+fw: AP_TTWO_PONE v8 boot 692ms
+eloop_init:287::start
+user_eloop_run:309::run
+[695]ota pos:0	version:26693
+[697]no this event(20001)...
+[697]no this event(20005)...
+[697]EVENT 10003 IGNORED
+[698]no this event(20001)...
+[698]scan down.......
+[698]user_sta_add:0 20 0 0 0 0
+[2006]*** add success: ADC channel cnt = 3, name:13
+[3049]tx_status: total:2, retry:0, lost:0
+[4049]tx_status: total:6, retry:0, lost:0
+[4062]EVENT 10004 IGNORED
+P2PJNI  :--->20260811-1 
+P2PJNI  :qwe..._sess_create_new_sock()  start p2pRecv 
+P2PJNI  :qwe..._sess_create_new_sock()  end p2pRecv 
+[4303]pthread is not exist!
+P2PJNI  :_dev_recv_alive  cmd:34 
+P2PJNI  :_dev_recv_alive  cmd:34 
+--------------------
+local:c8:55:70:0f:be:68
+    bios:2, pack:8 
+    pwr idx: 0
+    chip-temperature: 40
+    freq:2412, bg_rssi:-86
+    cca: -76, -66, -68
+    tx: txq:0, ps:0, tx_stat_q:0,
+        tx dma:30, total tx:30, retry:4, tx lost:0, tx err:0
+    rx: frms:232, data:45
+    throughput: tx: 4.60 Kbps, rx: 11.57 Kbps
+    max gain:7
+sta:2c:2b:db:9c:dd:88, aid:0, rssi:-51, evm:-20, tx frm type:*0, tx mcs:*2, freq offset<-32768
+    ifidx:0, MAC:c8:55:70:0f:be:68
+
+--------------------
+[6707]ip:192.168.4.99  freemem:65908,total skb:14760 skb free tx:11648,skb free rx:11808
+the current time is 1970_01_01 08:00:06
+[7049]tx_status: total:2, retry:2, lost:0
+P2PJNI  :_dev_recv_alive  cmd:34 
+[7483][p2plistenThreadProc:1167] p2p handle is -3 [HL_ERROR_TIME_OUT]
+P2PJNI  :qwe..._sess_create_new_sock()  start p2pRecv 
+P2PJNI  :qwe..._sess_create_new_sock()  end p2pRecv 
+[7537]jpeg_stream_init:847
+[7537]opcode_func:372
+[7538]src:200266E8
+[7538]src open_ref:1
+[7539]pthread is not exist!
+[JPG_SIZE_ALARM] len=17100 max=17100 over=1 total=1
+P2PJNI  :_dev_recv_alive  cmd:34 
+P2PJNI  :qwe..._dev_recv_alive() å¿è·³é½åæ¥äº alloc_relay=0 one_svr=0 force_one_svr=0 force_tcp=0 state=2 nat=3 idx=0 svr_alive_arrhythmia_cnt=0 bw_out=216 bw_in=0 
+P2PJNI  :_dev_recv_alive  cmd:34 
+P2PJNI  :qwe..._dev_recv_alive() å¿è·³é½åæ¥äº alloc_relay=0 one_svr=0 force_one_svr=0 force_tcp=0 state=3 nat=3 idx=2 svr_alive_arrhythmia_cnt=0 bw_out=216 bw_in=0 
+[7854]jpg done len err:255
+[7854]BUF len err:16084  1044480
+P2PJNI  :_dev_recv_alive  cmd:34 
+P2PJNI  :_dev_recv_alive  cmd:34 
+P2PJNI  :qwe..._dev_recv_alive() å¿è·³é½åæ¥äº alloc_relay=0 one_svr=0 force_one_svr=0 force_tcp=0 state=4 nat=3 idx=2 svr_alive_arrhythmia_cnt=0 bw_out=216 bw_in=0 
+[8049]tx_status: total:20, retry:2, lost:0
+[8154]jpg done len err:255
+[8154]BUF len err:16088  1044480
+[8529]jpg done len err:255
+[8529]BUF len err:16064  1044480
+[8829]jpg done len err:255
+[8829]BUF len err:16028  1044480
+[9049]tx_status: total:1, retry:0, lost:0
+[9054]jpg done len err:255
+[9054]BUF len err:16068  1044480
+[9354]jpg done len err:255
+[9354]BUF len err:16084  1044480
+[9437]pthread is not exist!
+[9504]jpg done len err:255
+[9504]BUF len err:16012  1044480
+[9585]erase flash, 1 sectors ...
+[9587]write flash, 1012 bytes ...
+[9590]verify flash ... OK
+[9590]switch syscfg partition ... OK
+[9592]syscfg_write OK! (addr:fe000, crc=a11d, size:1012, last_addr:ff000)
+[9594][CZ_P2P_JsonSendBackEx:1731] {
+	"cmd":	100,
+	"admin":	1,
+	"result":	0,
+	"mode":	1,
+	"pushMode":	1,
+	"checkstr":	"SHIX",
+	"switchResolution":	0,
+	"supportSD":	1,
+	"p2pChannel":	4,
+	"isApMode":	0,
+	"cloudKey":	"183C88",
+	"shareAuth":	0,
+	"creat
+P2PJNI  :qwe..._sess_create_new_sock()  start p2pRecv 
+P2PJNI  :qwe..._sess_create_new_sock()  end p2pRecv 
+[9744]pthread is not exist!
+[10007][CZ_P2P_JsonSendBackEx:1731] {
+	"pro":	"notify_bat",
+	"cmd":	715,
+	"batstatus":	1,
+	"batvalue":	100
+},len=72
+--------------------
+local:c8:55:70:0f:be:68
+    bios:2, pack:8 
+    pwr idx: 0
+    chip-temperature: 43
+    freq:2412, bg_rssi:-85
+    cca: -75, -65, -67
+    tx: txq:0, ps:0, tx_stat_q:0,
+        tx dma:103, total tx:103, retry:11, tx lost:0, tx err:0
+    rx: frms:247, data:42
+    throughput: tx: 11.36 Kbps, rx: 6.40 Kbps
+    max gain:7
+sta:2c:2b:db:9c:dd:88, aid:0, rssi:-52, evm:-21, tx frm type:*3, tx mcs:*3, sgi:1, freq offset<-32768
+    ifidx:0, MAC:c8:55:70:0f:be:68
+
+--------------------
+[10139]erase flash, 1 sectors ...
+[10141]write flash, 1012 bytes ...
+[10145]verify flash ... OK
+[10146]switch syscfg partition ... OK
+[10148]syscfg_write OK! (addr:ff000, crc=a11d, size:1012, last_addr:fe000)
+[10150][CZ_P2P_JsonSendBackEx:1731] {
+	"cmd":	126,
+	"result":	0
+},len=29
+[10212][CZ_P2P_JsonSendBackEx:1731] {
+	"cmd":	101,
+	"result":	0,
+	"tz":	28800,
+	"time":	4003029014,
+	"stream":	0,
+	"sysver":	"AP_TTWO_PONE-8",
+	"productName":	"AP_TTWO_PONE",
+	"rotmir":	0,
+	"sdstatu":	0,
+	"mic":	1,
+	"spk":	0,
+	"alarmSwitch":	1,
+	"i
+[10278][CZ_P2P_JsonSendBackEx:1731] {
+	"cmd":	103,
+	"result":	0,
+	"prover":	1,
+	"factory":	"CYCZ",
+	"product":	0,
+	"chip":	"TXW816",
+	"is4g":	0,
+	"sensor":	"GC0307",
+	"mic":	1,
+	"vcodec":	0,
+	"res":	"640*480",
+	"cloud":	1,
+	"tfplay":	1,
+	"lensCount
+[10368]inteface1 find new bss: ac:a7:f1:bb:ad:30-BABY-JR
+[11542]erase flash, 1 sectors ...
+[11544]write flash, 1012 bytes ...
+[11547]verify flash ... OK
+[11548]switch syscfg partition ... OK
+[11549]syscfg_write OK! (addr:fe000, crc=a11d, size:1012, last_addr:ff000)
+[11551][CZ_P2P_JsonSendBackEx:1731] {
+	"cmd":	9001,
+	"result":	0
+},len=30
+[11823]ip:192.168.4.99  freemem:60420,total skb:14760 skb free tx:11044,skb free rx:11808
+the current time is 2026_11_07 16:30:15
+[12049]tx_status: total:5, retry:0, lost:0
+[12512][CZ_P2P_JsonSendBackEx:1731] {
+	"cmd":	111,
+	"result":	0
+},len=29
+[12574][CZ_P2P_JsonSendBackEx:1731] {
+	"cmd":	107,
+	"result":	0,
+	"pirenable":	1,
+	"pirsensitive":	1,
+	"pirPush":	1,
+	"pirvideotime":	60,
+	"pirDelayTime":	180
+},len=124
+[13049]tx_status: total:83, retry:29, lost:1
+P2PJNI  :_dev_recv_alive  cmd:34 
+P2PJNI  :_dev_recv_alive  cmd:34 
+P2PJNI  :_dev_recv_alive  cmd:34 
+P2PJNI  :qwe..._dev_recv_alive() å¿è·³é½åæ¥äº alloc_relay=0 one_svr=0 force_one_svr=0 force_tcp=0 state=5 nat=0 idx=2 svr_alive_arrhythmia_cnt=0 bw_out=297 bw_in=0 
+[14049]tx_status: total:146, retry:52, lost:0
+--------------------
+local:c8:55:70:0f:be:68
+    bios:2, pack:8 
+    pwr idx: 0
+    chip-temperature: 46
+    freq:2412, bg_rssi:-87
+    cca: -77, -67, -69
+    tx: txq:1, ps:0, tx_stat_q:9,
+        tx dma:348, total tx:339, retry:174, tx lost:2, tx err:0
+    rx: frms:530, data:353
+    throughput: tx: 472.13 Kbps, rx: 43.56 Kbps
+    max gain:7
+sta:2c:2b:db:9c:dd:88, aid:0, rssi:-55, evm:-18, tx frm type:*3, tx mcs:*5, sgi:1, freq offset:-27578
+    ifidx:0, MAC:c8:55:70:0f:be:68
+
+--------------------
+[JPG_SIZE][JPG0] frames=100 avg=16658 min=15992 max=17608 overmax=2 qt=0x8 dqt=6
+[16049]tx_status: total:161, retry:128, lost:0
+[16943]ip:192.168.4.99  freemem:17884,total skb:14760 skb free tx:0,skb free rx:2368
+the current time is 2026_11_07 16:30:20
+[17049]tx_status: total:128, retry:180, lost:3
+[18049]tx_status: total:76, retry:96, lost:0
+[19012]inteface1 find new bss: bc:07:1d:ec:6c:f8-SINGTEL-6CF8
+[19049]tx_status: total:153, retry:110, lost:0
+--------------------
+local:c8:55:70:0f:be:68
+    bios:2, pack:8 
+    pwr idx: 0
+    chip-temperature: 48
+    freq:2412, bg_rssi:-88
+    cca: -77, -67, -69
+    tx: txq:1, ps:0, tx_stat_q:9,
+        tx dma:559, total tx:559, retry:529, tx lost:3, tx err:0
+    rx: frms:702, data:536
+    throughput: tx: 821.39 Kbps, rx: 61.28 Kbps
+    max gain:7
+sta:2c:2b:db:9c:dd:88, aid:0, rssi:-52, evm:-20, tx frm type:*3, tx mcs:*6, sgi:1, freq offset:-14027
+    ifidx:0, MAC:c8:55:70:0f:be:68
+
+--------------------
+[20193]inteface1 find new bss: ac:a7:f1:bb:ad:30-BABY-JR
+[20404]inteface1 find new bss: ba:a7:f1:bb:ad:30-
+[21049]tx_status: total:171, retry:110, lost:0
+[22049]tx_status: total:33, retry:11, lost:0
+[22063]ip:192.168.4.99  freemem:49936,total skb:14760 skb free tx:11648,skb free rx:11808
+the current time is 2026_11_07 16:30:25
+[23049]tx_status: total:158, retry:121, lost:0
+[JPG_SIZE][JPG0] frames=100 avg=17433 min=16580 max=17620 overmax=0 qt=0x8 dqt=6
+[24049]tx_status: total:79, retry:29, lost:0
+--------------------
+local:c8:55:70:0f:be:68
+    bios:2, pack:8 
+    pwr idx: 0
+    chip-temperature: 49
+    freq:2412, bg_rssi:-85
+    cca: -75, -65, -67
+    tx: txq:0, ps:0, tx_stat_q:0,
+        tx dma:500, total tx:509, retry:281, tx lost:0, tx err:0
+    rx: frms:673, data:496
+    throughput: tx: 777.30 Kbps, rx: 57.12 Kbps
+    max gain:7
+sta:2c:2b:db:9c:dd:88, aid:0, rssi:-52, evm:-19, tx frm type:*3, tx mcs:*6, sgi:1, freq offset:-4843
+    ifidx:0, MAC:c8:55:70:0f:be:68
+
+--------------------
+[27049]tx_status: total:176, retry:12, lost:0
+P2PJNI  :_dev_recv_alive  cmd:34 
+[27183]ip:192.168.4.99  freemem:54048,total skb:14760 skb free tx:11648,skb free rx:11808
+the current time is 2026_11_07 16:30:31
+P2PJNI  :_dev_recv_alive  cmd:34 
+[28049]tx_status: total:123, retry:9, lost:0
+[29049]tx_status: total:83, retry:2, lost:0
+--------------------
+local:c8:55:70:0f:be:68
+    bios:2, pack:8 
+    pwr idx: 0
+    chip-temperature: 50
+    freq:2412, bg_rssi:-89
+    cca: -77, -67, -69
+    tx: txq:0, ps:0, tx_stat_q:0,
+        tx dma:605, total tx:605, retry:41, tx lost:0, tx err:0
+    rx: frms:739, data:574
+    throughput: tx: 927.71 Kbps, rx: 65.77 Kbps
+    max gain:7
+sta:2c:2b:db:9c:dd:88, aid:0, rssi:-52, evm:-24, tx frm type:*3, tx mcs:*4, sgi:1, freq offset:-2622
+    ifidx:0, MAC:c8:55:70:0f:be:68
+
+--------------------
+[JPG_SIZE][JPG0] frames=100 avg=17419 min=17360 max=17492 overmax=0 qt=0x8 dqt=6
+[32049]tx_status: total:86, retry:4, lost:0
+[32304]ip:192.168.4.99  freemem:45276,total skb:14760 skb free tx:11648,skb free rx:11808
+the current time is 2026_11_07 16:30:36
+[33049]tx_status: total:142, retry:12, lost:0
+[33560]inteface1 find new bss: f2:75:0c:8f:0b:18-
+[34049]tx_status: total:80, retry:22, lost:0
+--------------------
+local:c8:55:70:0f:be:68
+    bios:2, pack:8 
+    pwr idx: 0
+    chip-temperature: 52
+    freq:2412, bg_rssi:-84
+    cca: -74, -64, -66
+    tx: txq:0, ps:0, tx_stat_q:8,
+        tx dma:664, total tx:656, retry:117, tx lost:0, tx err:0
+    rx: frms:797, data:636
+    throughput: tx: 1019.74 Kbps, rx: 73.35 Kbps
+    max gain:7
+sta:2c:2b:db:9c:dd:88, aid:0, rssi:-56, evm:-19, tx frm type:*3, tx mcs:*4, sgi:1, freq offset:-4200
+    ifidx:0, MAC:c8:55:70:0f:be:68
+
+--------------------
+[37049]tx_status: total:157, retry:22, lost:0
+[37425]ip:192.168.4.99  freemem:39400,total skb:14760 skb free tx:11648,skb free rx:11808
+the current time is 2026_11_07 16:30:41
+[37611]inteface1 find new bss: be:a7:f1:bb:ad:30-SINGTEL-EB80_MLO
+[38049]tx_status: total:169, retry:55, lost:0
+[JPG_SIZE][JPG0] frames=100 avg=17411 min=17348 max=17476 overmax=0 qt=0x8 dqt=6
+[39049]tx_status: total:133, retry:28, lost:0
+--------------------
+local:c8:55:70:0f:be:68
+    bios:2, pack:8 
+    pwr idx: 0
+    chip-temperature: 52
+    freq:2412, bg_rssi:-84
+    cca: -74, -64, -66
+    tx: txq:0, ps:0, tx_stat_q:0,
+        tx dma:638, total tx:646, retry:155, tx lost:0, tx err:0
+    rx: frms:790, data:623
+    throughput: tx: 1002.76 Kbps, rx: 71.13 Kbps
+    max gain:7
+sta:2c:2b:db:9c:dd:88, aid:0, rssi:-62, evm:-19, tx frm type:*3, tx mcs:*4, sgi:1, freq offset:-968
+    ifidx:0, MAC:c8:55:70:0f:be:68
+
+--------------------

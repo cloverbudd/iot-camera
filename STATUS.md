@@ -33,21 +33,23 @@ and hardware IDs (chip `TXW816`, sensor `GC0307`, factory `CYCZ`,
 firmware `AP_TTWO_PONE-8`). Full detail, exact wiring, and the baud-sweep
 method: **`docs/uart-findings.md`**.
 
-**Not yet found: the actual session/encryption key material.** Two
-capture sessions (steady-state + live app interaction) showed no key
-bytes. A cold-boot attempt (capture running from power-on) failed to
-catch anything useful, but inconclusively — the push-fit wire connection
-is flaky enough (confirmed via a loopback self-test ruling out the
-FTDI/driver side) that it may have just jostled loose during the
-power-cycle handling, not necessarily a sign the key isn't logged at
-boot.
+## UPDATE 2026-11-07 (later same day): UART key hunt CONCLUSIVELY CLOSED
 
-**Next step for whoever picks this up: solder a proper 3-pin header**
-before trying the cold-boot capture again — see "Connection reliability"
-in `docs/uart-findings.md` for why push-fit wire is not reliable enough
-at this baud rate to trust a negative result.
+A clean full cold-boot capture succeeded (no corruption this time) and
+covered the entire boot sequence including the P2P module's startup and
+its full alive/relay state machine. **The control-channel session key
+never appears anywhere in the log.** This device's firmware genuinely
+does not print it over UART — confirmed, not a wiring/baud-reliability
+issue (this capture was clean start to finish). Full detail:
+`docs/uart-findings.md`, "second session" section.
 
-## Original UART instructions (superseded by the above, kept for reference)
+**UART is done as a path to the session key. Rooting the phone (below)
+is now the only remaining path.** UART remains useful for the plaintext
+JSON protocol fields already documented, and as a possible route to dump
+the `syscfg` flash partition directly later if needed (config data only,
+not expected to contain the session key either).
+
+## Original UART instructions (kept for reference — wiring/baud still correct if reusing this console for protocol/debug work)
 
 1. Get a **3.3V-logic** USB-to-TTL/serial adapter (CP2102, CH340, FTDI —
    confirm it's 3.3V, NOT 5V; 5V on these pins can damage the board).

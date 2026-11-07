@@ -95,25 +95,45 @@ Logs seen include:
 `GC0307`, factory code `CYCZ`, product line `AP_TTWO_PONE`, firmware
 `AP_TTWO_PONE-8`.
 
-## Open questions / not yet found
+## UPDATE 2026-11-07 (second session): full cold boot captured — key hunt via UART is CONCLUSIVELY CLOSED
 
-- **No raw session/encryption key material surfaced** in ~2 minutes of
-  steady-state + live-app-interaction capture. Two explanations, not yet
-  distinguished:
-  1. Key derivation happens too fast / too early (e.g. only during the
-     very first P2P handshake moment right at boot) and our captures
-     started after that window.
-  2. The native `.so`'s key material is never printed via this log path
-     at all (plausible — the log calls we're seeing are a different,
-     higher-level status/JSON layer, not inside `e_init`/`m_init` etc.).
-- A cold-boot capture (camera unpowered → power on while capturing →
-  immediately open app) did **not** catch useful output — got a short
-  noise burst then nothing, consistent with the wire jostling loose
-  during the physical plug/unplug action (see reliability notes above),
-  not conclusive either way on question 1.
-- **Next attempt should use a soldered header** before trying the
-  cold-boot window again, to rule out "wire came loose during handling"
-  as the reason nothing useful showed up.
+A clean, complete cold-boot capture succeeded (~19KB, 99.5% printable,
+no corruption) covering: full RF/PHY init, the camera's own Wi-Fi
+association + WPA 4-way handshake to the home AP, sensor/CSI init,
+`hgSDK-v2.5.1.7-26693` banner, `fw: AP_TTWO_PONE v8 boot 692ms`, P2P
+module startup (`P2PJNI :--->20260811-1`), and the full P2P
+alive/relay state machine cycling through `state=2` → `3` → `4` → `5` →
+`6` (`alloc_relay`/`nat`/`force_tcp` flags) exactly as seen in
+steady-state logs.
+
+**The control-channel / P2P session encryption key never appears
+anywhere in this log**, including through the entire P2P init sequence.
+The only key material logged at all is the camera's own **Wi-Fi WPA
+PTK/GTK** (`hgkey: cipher=... keylen=16 key=...`, `RSN: added PMKID: ...`)
+for its connection to the home router — unrelated to the P2P/cloud
+cipher we need, and redacted from the committed log
+(`logs/uart_coldboot_redacted.log`) since it's real (if ephemeral,
+session-derived) key material for a real network.
+
+**Conclusion: UART is not a viable path to the P2P/control-channel
+session key.** The vendor's `P2PJNI`/`libapTrans_jni.so` logging only
+ever prints status codes and public JSON fields over this console, never
+key bytes — this isn't a capture-reliability problem (this run was
+clean), it's that the firmware genuinely doesn't log it here. **Root the
+phone — see "The other next step" below — is now the only remaining
+path for the session key.**
+
+What UART *is* still useful for, independent of the key:
+- Confirming/debugging the device's Wi-Fi connection state live.
+- The plaintext JSON protocol fields (still valuable, see table above).
+- Dumping the `syscfg` flash region directly if we ever want the
+  persisted (non-ephemeral) config without going through the key at all
+  — observed read at boot (`syscfg: invalid magic_num=0, addr=fe000` →
+  `syscfg_read OK!`) and writes at `addr:fe000`/`addr:ff000` (alternating,
+  likely A/B wear-leveling), `crc`-checked, 1012 bytes. This is a
+  possible alternate path worth a dedicated flash-dump session later if
+  the phone-root path stalls, but it's config data, not a crypto key —
+  don't expect the session key to live here either.
 
 ## Files
 
@@ -122,3 +142,10 @@ Logs seen include:
 - `logs/uart_app_interaction_921600.log` — ~90s capture spanning a live
   phone-app connect/view session, 99.3% printable but with some
   mid-stream corruption (see reliability notes).
+- `logs/uart_coldboot_redacted.log` — full clean cold-boot capture
+  (~19KB, 99.5% printable). **Wi-Fi WPA PTK/GTK key bytes and the home
+  AP's SSID are redacted** (`[REDACTED-KEY-MATERIAL]` /
+  `[REDACTED-SSID]`) before commit — this is real, if ephemeral,
+  session key material for a real network and must never be published
+  verbatim. Everything else (boot banner, P2P init, JSON command dumps,
+  flash writes) is left intact.
