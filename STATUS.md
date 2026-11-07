@@ -17,19 +17,37 @@ session key depends on additional entropy from the actual P2P
 handshake/punch exchange with the camera, which our standalone native
 calls never performed.
 
-## NEW, possibly-faster alternative: UART on the camera's own PCB
+## UPDATE 2026-11-07: UART confirmed working — full findings in docs/uart-findings.md
 
-Opening the camera revealed a 3-pin header silkscreened **`TXD RXD GND`**
-directly on the mainboard (marked `X8-V1.1-26811`, v1.1). This is a serial
-debug console. On cheap IoT camera boards these are very often left
-enabled for factory debug and can give a boot log or even a root shell
-**directly on the camera**, which would let us read the session key out of
-the camera's own running process — no phone root needed at all, and no
-guessing about handshake timing either (we'd see what the camera itself
-does, not just what the app sends it).
+The 3-pin `TXD RXD GND` header on the mainboard (`X8-V1.1-26811`) is a
+**live, readable debug console at 921600 8N1** (not 115200 — that and
+every other common rate gave garbage). Confirmed with an FTDI FT232RL set
+to 3.3V, crossed wiring, bare jumper wire push-fit into the unsoldered
+holes.
 
-**Try this before/alongside rooting the phone — it may be the faster
-unlock:**
+What we got: continuous firmware debug log (Wi-Fi stats, JPEG frame
+sizes, P2P/relay state matching `libapTrans_jni.so` internals) and
+**plaintext JSON** command/response blobs via `CZ_P2P_JsonSendBackEx`,
+giving us real field names/values for cmd IDs 100/101/103/107/111/126/715
+and hardware IDs (chip `TXW816`, sensor `GC0307`, factory `CYCZ`,
+firmware `AP_TTWO_PONE-8`). Full detail, exact wiring, and the baud-sweep
+method: **`docs/uart-findings.md`**.
+
+**Not yet found: the actual session/encryption key material.** Two
+capture sessions (steady-state + live app interaction) showed no key
+bytes. A cold-boot attempt (capture running from power-on) failed to
+catch anything useful, but inconclusively — the push-fit wire connection
+is flaky enough (confirmed via a loopback self-test ruling out the
+FTDI/driver side) that it may have just jostled loose during the
+power-cycle handling, not necessarily a sign the key isn't logged at
+boot.
+
+**Next step for whoever picks this up: solder a proper 3-pin header**
+before trying the cold-boot capture again — see "Connection reliability"
+in `docs/uart-findings.md` for why push-fit wire is not reliable enough
+at this baud rate to trust a negative result.
+
+## Original UART instructions (superseded by the above, kept for reference)
 
 1. Get a **3.3V-logic** USB-to-TTL/serial adapter (CP2102, CH340, FTDI —
    confirm it's 3.3V, NOT 5V; 5V on these pins can damage the board).
@@ -37,25 +55,16 @@ unlock:**
    `RXD`↔board `TXD`, adapter `TXD`↔board `RXD`. **Do not connect the
    adapter's own 5V/VCC pin to the board** — the camera is powered
    separately via its own USB-C port.
-3. Open a serial terminal (`screen /dev/ttyUSBx 115200`, `minicom`, or
-   PuTTY) at **115200 baud** first (most common default); if the output is
-   garbled, try 57600, 9600, then 921600.
+3. Open a serial terminal at **921600 baud** (confirmed correct rate —
+   see update above; the usual 115200 default does NOT work on this
+   board).
 4. Power-cycle the camera (unplug/replug its USB-C) while the terminal is
-   open and watch for boot log output immediately — most of the useful
-   information (bootloader messages, kernel/RTOS log, sometimes a login
-   prompt) appears only in the first few seconds after power-on.
+   open and watch for boot log output immediately.
 5. If a login prompt appears, try common defaults for this device class:
    `root`/`root`, `root`/(blank), `admin`/`admin`, `root`/`12345`.
-6. If it's read-only streaming debug/log output with no prompt, that's
-   still useful — it may show the key-derivation calls logged in plain
-   text (this SoC's vendor code logs heavily via `HL_LOG`/`__android_log_print`-
-   style calls, confirmed in `libapTrans_jni.so`; the LINUX/RTOS side
-   likely logs similarly over UART even when there's no login shell).
 
 Record whatever appears (minus any credential it reveals — see the
-redaction note in `docs/protocol.md`) and open an issue or extend this
-doc with what you find; it directly informs whether the phone-root path
-below is still necessary.
+redaction note in `docs/protocol.md`).
 
 ## The other next step: root the phone
 

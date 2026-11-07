@@ -1,0 +1,543 @@
+[1385990]inteface1 find new bss: ba:a7:f1:bb:ad:30-
+[1387007]inteface1 find new bss: ac:a7:f1:bb:ad:30-BABY-JR
+[1387010]inteface1 find new bss: b6:a7:f1:bb:ad:30-
+P2PJNI  :_dev_recv_alive  cmd:34 
+P2PJNI  :_dev_recv_alive  cmd:34 
+[1388852]ip:192.168.4.99  freemem:47080,total skb:14760 skb free tx:11648,skb free rx:11808
+the current time is 2026_11_07 13:30:47
+[1389049]tx_status: total:4, retry:8, lost:0
+--------------------
+local:c8:55:70:0f:be:68
+    bios:2, pack:8 
+    pwr idx: 0
+    chip-temperature: 66
+    freq:2412, bg_rssi:-89
+    cca: -79, -69, -71
+    tx: txq:0, ps:0, tx_stat_q:0,
+        tx dma:6, total tx:6, retry:8, tx lost:0, tx err:0
+    rx: frms:249, data:8
+    throughput: tx: 640 bps, rx: 1.13 Kbps
+    max gain:7
+sta:2c:2b:db:9c:dd:88, aid:0, rssi:-58, evm:-22, tx frm type:*3, tx mcs:*5, sgi:1, freq offset:199
+    ifidx:0, MAC:c8:55:70:0f:be:68
+
+--------------------
+[JPG_SIZE][JPG0] frames=100 avg=14063 min=13988 max=14128 overmax=0 qt=0xf dqt=6
+P2PJNI  :_dev_recv_alive  cmd:34 
+P2PJNI  :qwe..._dev_recv_alive() 心跳都回来了 alloc_relay=0 one_svr=0 force_one_svr=0 force_tcp=0 state=6 nat=0 idx=2 svr_alive_arrhythmia_cnt=0 bw_out=10476 bw_in=0 
+[1392049]tx_status: total:1, retry:2, lost:0
+[1393798]inteface1 find new bss: e6:d6:df:c8:eb:80-SINGTEL-EB80_MLO
+[1393973]ip:192.168.4.99  freemem:46984,total skb:14760 skb free tx:11648,skb free rx:11808
+the current time is 2026_11_07 13:30:53
+[1394049]tx_status: total:1, retry:0, lost:0
+--------------------
+local:c8:55:70:0f:be:68
+    bios:2, pack:8 
+    pwr idx: 0
+    chip-temperature: 66
+    freq:2412, bg_rssi:-88
+    cca: -78, -68, -70
+    tx: txq:0, ps:0, tx_stat_q:0,
+        tx dma:5, total tx:5, retry:2, tx lost:0, tx err:0
+    rx: frms:290, data:7
+    throughput: tx: 408 bps, rx: 3.09 Kbps
+    max gain:7
+sta:2c:2b:db:9c:dd:88, aid:0, rssi:-55, evm:-23, tx frm type:*3, tx mcs:*5, sgi:1, freq offset:630
+    ifidx:0, MAC:c8:55:70:0f:be:68
+
+--------------------
+[JPG_SIZE][JPG0] frames=100 avg=14109 min=14000 max=14240 overmax=0 qt=0xf dqt=6
+[40;32m[1397811]pthread is not exist!
+[0m[1397885]erase flash, 1 sectors ...
+[1397888]write flash, 1012 bytes ...
+[1397889]verify flash ... OK
+[1397890]switch syscfg partition ... OK
+[1397891]syscfg_write OK! (addr:fe000, crc=1213, size:1012, last_addr:ff000)
+[1397893][31m[CZ_P2P_JsonSendBackEx:1731] {
+	"cmd":	100,
+	"admin":	1,
+	"result":	0,
+	"mode":	1,
+	"pushMode":	1,
+	"checkstr":	"SHIX",
+	"switchResolution":	0,
+	"supportSD":	1,
+	"p2pChannel":	4,
+	"isApMode":	0,
+	"cloudKey":	"183C88",
+	"shareAuth":	0,
+	"cr
+[1397900][31m[CZ_P2P_JsonSendBackEx:1731] {
+	"pro":	"notify_bat",
+	"cmd":	715,
+	"batstatus":	1,
+	"batvalue":	100
+},len=72
+[0m[1397959]erase flash, 1 sectors ...
+[1397961]write flash, 1012 bytes ...
+[1397962]verify flash ... OK
+[1397964]switch syscfg partition ... OK
+[1397965]syscfg_write OK! (addr:ff000, crc=1213, size:1012, last_addr:fe000)
+[1397967][31m[CZ_P2P_JsonSendBackEx:1731] {
+	"cmd":	126,
+	"result":	0
+},len=29
+[0m[1398029][31m[CZ_P2P_JsonSendBackEx:1731] {
+	"cmd":	101,
+	"result":	0,
+	"tz":	28800,
+	"time":	4003018261,
+	"stream":	0,
+	"sysver":	"AP_TTWO_PONE-8",
+	"productName":	"AP_TTWO_PONE",
+	"rotmir":	0,
+	"sdstatu":	0,
+	"mic":	1,
+	"spk":	0,
+	"alarmSwitch":	1,
+	
+[1398049]tx_status: total:84, retry:82, lost:0
+[1398095][31m[CZ_P2P_JsonSendBackEx:1731] {
+	"cmd":	103,
+	"result":	0,
+	"prover":	1,
+	"factory":	"CYCZ",
+	"product":	0,
+	"chip":	"TXW816",
+	"is4g":	0,
+	"sensor":	"GC0307",
+	"mic":	1,
+	"vcodec":	0,
+	"res":	"640*480",
+	"cloud":	1,
+	"tfplay":	1,
+	"lensCou
+P2PJNI  :qwe..._sess_create_new_sock()  start p2pRecv 
+P2PJNI  :qwe..._sess_create_new_sock()  end p2pRecv 
+[40;32m[1398113]pthread is not exist!
+[0m[1399049]tx_status: total:2, retry:2, lost:0
+[1399083]ip:192.168.4.99  freemem:59964,total skb:14760 skb free tx:11648,skb free rx:11808
+the current time is 2026_11_07 13:31:02
+[1399299]erase flash, 1 sectors ...
+[1399302]write flash, 1012 bytes ...
+[1399304]verify flash ... OK
+[1399304]switch syscfg partition ... OK
+[1399306]syscfg_write OK! (addr:fe000, crc=1213, size:1012, last_addr:ff000)
+[1399308][31m[CZ_P2P_JsonSendBackEx:1731] {
+	"cmd":	9001,
+	"result":	0
+},len=30
+[0m[1399489][31m[CZ_P2P_JsonSendBackEx:1731] {
+	"cmd":	111,
+	"result":	0
+},len=29
+[0m[1399551][31m[CZ_P2P_JsonSendBackEx:1731] {
+	"cmd":	107,
+	"result":	0,
+	"pirenable":	1,
+	"pirsensitive":	1,
+	"pirPush":	1,
+	"pirvideotime":	60,
+	"pirDelayTime":	180
+},len=124
+[0mP2PJNI  :_dev_recv_alive  cmd:34 
+--------------------
+local:c8:55:70:0f:be:68
+    bios:2, pack:8 
+    pwr idx: 0
+    chip-temperature: 66
+    freq:2412, bg_rssi:-86
+    cca: -76, -66, -68
+    tx: txq:0, ps:0, tx_stat_q:0,
+        tx dma:175, total tx:175, retry:107, tx lost:0, tx err:0
+    rx: frms:398, data:118
+    throughput: tx: 124.94 Kbps, rx: 15.65 Kbps
+    max gain:7
+sta:2c:2b:db:9c:dd:88, aid:0, rssi:-60, evm:-19, tx frm type:*3, tx mcs:*4, sgi:1, freq offset:62
+    ifidx:0, MAC:c8:55:70:0f:be:68
+
+--------------------
+P2PJNI  :_dev_recv_alive  cmd:34 
+P2PJNI  :_dev_recv_alive  cmd:34 
+P2PJNI  :qwe..._dev_recv_alive() 心跳都回来了 alloc_relay=0 one_svr=0 force_one_svr=0 force_tcp=0 state=6 nat=0 idx=2 svr_alive_arrhythmia_cnt=0 bw_out=10557 bw_in=0 
+[1402049]tx_status: total:201, retry:246, lost:8
+[1403049]tx_status: total:170, retry:29, lost:0
+[1404049]tx_status: total:183, retry:107, lost:1
+[1404185]ip:192.168.4.99  freemem:59896,total skb:14760 skb free tx:11648,skb free rx:11808
+the current time is 2026_11_07 13:31:07
+--------------------
+local:c8:55:70:0f:be:68
+    bios:2, pack:8 
+    pwr idx: 0
+    chip-temperature: 70
+    freq:2412, bg_rssi:-90
+    cca: -80, -70, -72
+    tx: txq:0, ps:0, tx_stat_q:0,
+        tx dma:921, total tx:919, retry:790, tx lost:16, tx err:0
+    rx: frms:1069, data:874
+    throughput: tx: 1.34 Mbps, rx: 99.71 Kbps
+    max gain:7
+sta:2c:2b:db:9c:dd:88, aid:0, rssi:-59, evm:-22, tx frm type:*3, tx mcs:*5, sgi:1, freq offset:982
+    ifidx:0, MAC:c8:55:70:0f:be:68
+
+--------------------
+[JPG_SIZE][JPG0] frames=100 avg=15474 min=13980 max=16076 overmax=0 qt=0x7 dqt=6
+[1406049]tx_status: total:166, retry:81, lost:0
+[1407049]tx_status: total:189, retry:8, lost:0
+[1408049]tx_status: total:178, retry:13, lost:0
+[1409049]tx_status: total:171, retry:12, lost:0
+[1409292]ip:192.168.4.99  freemem:60320,total skb:14760 skb free tx:11648,skb free rx:11808
+the current time is 2026_11_07 13:31:12
+--------------------
+local:c8:55:70:0f:be:68
+    bios:2, pack:8 
+    pwr idx: 0
+    chip-temperature: 67
+    freq:2412, bg_rssi:-89
+    cca: -79, -69, -71
+    tx: txq:0, ps:0, tx_stat_q:0,
+        tx dma:889, total tx:891, retry:123, tx lost:0, tx err:0
+    rx: frms:1056, data:865
+    throughput: tx: 1.32 Mbps, rx: 98.79 Kbps
+    max gain:7
+sta:2c:2b:db:9c:dd:88, aid:0, rssi:-57, evm:-19, tx frm type:*3, tx mcs:*4, sgi:1, freq offset:553
+    ifidx:0, MAC:c8:55:70:0f:be:68
+
+--------------------
+[1410798]inteface1 find new bss: 46:78:95:53:53:38-
+[1412049]tx_status: total:170, retry:12, lost:0
+P2PJNI  :_dev_recv_alive  cmd:34 
+P2PJNI  :_dev_recv_alive  cmd:34 
+[JPG_SIZE][JPG0] frames=100 avg=15981 min=15904 max=16060 overmax=0 qt=0x7 dqt=6
+[1413049]tx_status: total:172, retry:12, lost:0
+[1414049]tx_status: total:192, retry:11, lost:0
+[1414412]ip:192.168.4.99  freemem:60320,total skb:14760 skb free tx:11648,skb free rx:11808
+the current time is 2026_11_07 13:31:17
+--------------------
+local:c8:55:70:0f:be:68
+    bios:2, pack:8 
+    pwr idx: 0
+    chip-temperature: 67
+    freq:2412, bg_rssi:-91
+    cca: -81, -71, -73
+    tx: txq:0, ps:0, tx_stat_q:0,
+        tx dma:886, total tx:885, retry:50, tx lost:0, tx err:0
+    rx: frms:1054, data:848
+    throughput: tx: 1.31 Mbps, rx: 96.85 Kbps
+    max gain:7
+sta:2c:2b:db:9c:dd:88, aid:0, rssi:-58, evm:-23, tx frm type:*3, tx mcs:*4, sgi:1, freq offset:171
+    ifidx:0, MAC:c8:55:70:0f:be:68
+
+--------------------
+P2PJNI  :_dev_recv_alive  cmd:34 
+P2PJNI  :qwe..._dev_recv_alive() 心跳都回来了 alloc_relay=0 one_svr=0 force_one_svr=0 force_tcp=0 state=6 nat=0 idx=0 svr_alive_arrhythmia_cnt=0 bw_out=10665 bw_in=0 
+[1416049]tx_status: total:168, retry:12, lost:0
+[1417049]tx_status: total:192, retry:12, lost:0
+[1418049]tx_status: total:174, retry:19, lost:0
+[1418630]inteface1 find new bss: ac:a7:f1:bb:ad:30-BABY-JR
+[1419049]tx_status: total:183, retry:68, lost:1
+[1419456]inteface1 find new bss: ba:a7:f1:bb:ad:30-
+[1419532]ip:192.168.4.99  freemem:41264,total skb:14760 skb free tx:11648,skb free rx:11808
+the current time is 2026_11_07 13:31:22
+[1419657]inteface1 find new bss: b6:a7:f1:bb:ad:30-
+[1419869]inteface1 find new bss: be:a7:f1:bb:ad:30-SINGTEL-EB80_MLO
+--------------------
+local:c8:55:70:0f:be:68
+    bios:2, pack:8 
+    pwr idx: 0
+    chip-temperature: 67
+    freq:2412, bg_rssi:-84
+    cca: -74, -64, -66
+    tx: txq:0, ps:0, tx_stat_q:0,
+        tx dma:895, total tx:896, retry:118, tx lost:1, tx err:0
+    rx: frms:1070, data:876
+    throughput: tx: 1.33 Mbps, rx: 100.25 Kbps
+    max gain:7
+sta:2c:2b:db:9c:dd:88, aid:0, rssi:-59, evm:-23, tx frm type:*3, tx mcs:*4, sgi:1, freq offset:638
+    ifidx:0, MAC:c8:55:70:0f:be:68
+
+--------------------
+[JPG_SIZE][JPG0] frames=100 avg=16021 min=15916 max=16124 overmax=0 qt=0x7 dqt=6
+[1422049]tx_status: total:185, retry:13, lost:0
+[1423049]tx_status: total:179, retry:10, lost:0
+[1424049]tx_status: total:169, retry:30, lost:0
+[1424653]ip:192.168.4.99  freemem:43332,total skb:14760 skb free tx:10295,skb free rx:11808
+the current time is 2026_11_07 13:31:27
+--------------------
+local:c8:55:70:0f:be:68
+    bios:2, pack:8 
+    pwr idx: 0
+    chip-temperature: 68
+    freq:2412, bg_rssi:-88
+    cca: -78, -68, -70
+    tx: txq:0, ps:0, tx_stat_q:0,
+        tx dma:889, total tx:889, retry:71, tx lost:0, tx err:0
+    rx: frms:1101, data:862
+    throughput: tx: 1.32 Mbps, rx: 100.62 Kbps
+    max gain:7
+sta:2c:2b:db:9c:dd:88, aid:0, rssi:-58, evm:-20, tx frm type:*3, tx mcs:*4, sgi:1, freq offset:-135
+    ifidx:0, MAC:c8:55:70:0f:be:68
+
+--------------------
+[1427049]tx_status: total:176, retry:5, lost:0
+P2PJNI  :_dev_recv_alive  cmd:34 
+[JPG_SIZE][JPG0] frames=100 avg=15986 min=15888 max=16076 overmax=0 qt=0x7 dqt=6
+P2PJNI  :_dev_recv_alive  cmd:34 
+P2PJNI  :_dev_recv_alive  cmd:34 
+P2PJNI  :qwe..._dev_recv_alive() 心跳都回来了 alloc_relay=0 one_svr=0 force_one_svr=0 force_tcp=0 state=6 nat=0 idx=2 svr_alive_arrhythmia_cnt=0 bw_out=10746 bw_in=0 
+[1428049]tx_status: total:168, retry:14, lost:0
+[1429049]tx_status: total:189, retry:5, lost:0
+[1429774]ip:192.168.4.99  freemem:59896,total skb:14760 skb free tx:11648,skb free rx:11808
+the current time is 2026_11_07 13:31:32
+--------------------
+local:c8:55:70:0f:be:68
+    bios:2, pack:8 
+    pwr idx: 0
+    chip-temperature: 67
+    freq:2412, bg_rssi:-88
+    cca: -78, -68, -70
+    tx: txq:0, ps:0, tx_stat_q:2,
+        tx dma:891, total tx:884, retry:40, tx lost:0, tx err:0
+    rx: frms:1071, data:858
+    throughput: tx: 1.30 Mbps, rx: 98.15 Kbps
+    max gain:7
+sta:2c:2b:db:9c:dd:88, aid:0, rssi:-58, evm:-20, tx frm type:*3, tx mcs:*4, sgi:1, freq offset:893
+    ifidx:0, MAC:c8:55:70:0f:be:68
+
+--------------------
+[1431049]tx_status: total:172, retry:9, lost:0
+[1432049]tx_status: total:183, retry:31, lost:0
+[1433049]tx_status: total:174, retry:34, lost:0
+[1433826]inteface1 find new bss: f6:75:0c:8f:0b:18-
+[1434049]tx_status: total:179, retry:138, lost:1
+[1434895]ip:192.168.4.99  freemem:60216,total skb:14760 skb free tx:11648,skb free rx:11808
+the current time is 2026_11_07 13:31:37
+--------------------
+local:c8:55:70:0f:be:68
+    bios:2, pack:8 
+    pwr idx: 0
+    chip-temperature: 69
+    freq:2412, bg_rssi:-91
+    cca: -82, -72, -74
+    tx: txq:0, ps:0, tx_stat_q:7,
+        tx dma:890, total tx:890, retry:316, tx lost:3, tx err:0
+    rx: frms:1043, data:865
+    throughput: tx: 1.32 Mbps, rx: 98.88 Kbps
+    max gain:7
+sta:2c:2b:db:9c:dd:88, aid:0, rssi:-62, evm:-24, tx frm type:*3, tx mcs:*6, sgi:1, freq offset:366
+    ifidx:0, MAC:c8:55:70:0f:be:68
+
+--------------------
+[JPG_SIZE][JPG0] frames=100 avg=15942 min=15804 max=16032 overmax=0 qt=0x7 dqt=6
+[1435127]inteface1 find new bss: be:a7:f1:bb:ad:30-SINGTEL-EB80_MLO
+[1435321]inteface1 find new bss: ac:a7:f1:bb:ad:30-BABY-JR
+[1435632]inteface1 find new bss: b6:a7:f1:bb:ad:30-
+[1436147]inteface1 find new bss: ba:a7:f1:bb:ad:30-
+[1437049]tx_status: total:187, retry:99, lost:2
+[1438049]tx_status: total:191, retry:22, lost:0
+[1439049]tx_status: total:154, retry:196, lost:5
+P2PJNI  :_dev_recv_alive  cmd:34 
+[1440016]ip:192.168.4.99  freemem:59832,total skb:14760 skb free tx:11648,skb free rx:11808
+the current time is 2026_11_07 13:31:43
+--------------------
+local:c8:55:70:0f:be:68
+    bios:2, pack:8 
+    pwr idx: 0
+    chip-temperature: 70
+    freq:2412, bg_rssi:-92
+    cca: -82, -72, -74
+    tx: txq:0, ps:0, tx_stat_q:0,
+        tx dma:884, total tx:891, retry:766, tx lost:12, tx err:0
+    rx: frms:1044, data:847
+    throughput: tx: 1.29 Mbps, rx: 96.85 Kbps
+    max gain:7
+sta:2c:2b:db:9c:dd:88, aid:0, rssi:-59, evm:-22, tx frm type:*3, tx mcs:*6, sgi:1, freq offset:1858
+    ifidx:0, MAC:c8:55:70:0f:be:68
+
+--------------------
+P2PJNI  :_dev_recv_alive  cmd:34 
+P2PJNI  :_dev_recv_alive  cmd:34 
+P2PJNI  :qwe..._dev_recv_alive() 心跳都回来了 alloc_relay=0 one_svr=0 force_one_svr=0 force_tcp=0 state=6 nat=0 idx=2 svr_alive_arrhythmia_cnt=0 bw_out=10827 bw_in=0 
+[1442049]tx_status: total:182, retry:140, lost:2
+[1442412]inteface1 find new bss: f2:75:0c:8f:0b:18-
+[JPG_SIZE][JPG0] frames=100 avg=15967 min=15916 max=16044 overmax=0 qt=0x7 dqt=6
+[1443050]tx_status: total:167, retry:109, lost:0
+[1444049]tx_status: total:191, retry:91, lost:0
+--------------------
+local:c8:55:70:0f:be:68
+    bios:2, pack:8 
+    pwr idx: 0
+    chip-temperature: 68
+    freq:2412, bg_rssi:-87
+    cca: -77, -67, -69
+    tx: txq:0, ps:0, tx_stat_q:0,
+        tx dma:894, total tx:892, retry:584, tx lost:2, tx err:0
+    rx: frms:1045, data:869
+    throughput: tx: 1.32 Mbps, rx: 99.74 Kbps
+    max gain:7
+sta:2c:2b:db:9c:dd:88, aid:0, rssi:-58, evm:-22, tx frm type:*3, tx mcs:*4, sgi:1, freq offset:-1336
+    ifidx:0, MAC:c8:55:70:0f:be:68
+
+--------------------
+[1445138]ip:192.168.4.99  freemem:56676,total skb:14760 skb free tx:11034,skb free rx:11808
+the current time is 2026_11_07 13:31:48
+[1445174]inteface1 find new bss: ec:75:0c:8f:0b:18-Hans_Casa
+[1445406]inteface1 find new bss: 42:78:95:53:53:38-
+[1446049]tx_status: total:172, retry:11, lost:0
+[1447049]tx_status: total:181, retry:177, lost:2
+[1448025]inteface1 find new bss: ba:a7:f1:bb:ad:30-
+[1448049]tx_status: total:144, retry:218, lost:8
+[1448577]inteface1 find new bss: 3c:78:95:53:53:38-Fadzli
+[1449049]tx_status: total:204, retry:280, lost:9
+--------------------
+local:c8:55:70:0f:be:68
+    bios:2, pack:8 
+    pwr idx: 0
+    chip-temperature: 71
+    freq:2412, bg_rssi:-90
+    cca: -80, -70, -72
+    tx: txq:0, ps:0, tx_stat_q:0,
+        tx dma:895, total tx:897, retry:858, tx lost:20, tx err:0
+    rx: frms:1044, data:849
+    throughput: tx: 1.30 Mbps, rx: 96.89 Kbps
+    max gain:7
+sta:2c:2b:db:9c:dd:88, aid:0, rssi:-59, evm:-19, tx frm type:*3, tx mcs:*4, sgi:1, freq offset:937
+    ifidx:0, MAC:c8:55:70:0f:be:68
+
+--------------------
+[JPG_SIZE][JPG0] frames=100 avg=15943 min=15884 max=16012 overmax=0 qt=0x7 dqt=6
+[1450258]ip:192.168.4.99  freemem:51184,total skb:14760 skb free tx:5186,skb free rx:8100
+the current time is 2026_11_07 13:31:53
+[1452049]tx_status: total:181, retry:289, lost:7
+P2PJNI  :_dev_recv_alive  cmd:34 
+P2PJNI  :_dev_recv_alive  cmd:34 
+P2PJNI  :_dev_recv_alive  cmd:34 
+P2PJNI  :qwe..._dev_recv_alive() 心跳都回来了 alloc_relay=0 one_svr=0 force_one_svr=0 force_tcp=0 state=6 nat=0 idx=2 svr_alive_arrhythmia_cnt=0 bw_out=10908 bw_in=0 
+[1453049]tx_status: total:199, retry:206, lost:2
+[1454049]tx_status: total:171, retry:296, lost:7
+[1454265]inteface1 find new bss: ac:a7:f1:bb:ad:30-BABY-JR
+[1454271]inteface1 find new bss: ba:a7:f1:bb:ad:30-
+[1454702]inteface1 find new bss: de:d6:df:c8:eb:80-
+--------------------
+local:c8:55:70:0f:be:68
+    bios:2, pack:8 
+    pwr idx: 0
+    chip-temperature: 71
+    freq:2412, bg_rssi:-90
+    cca: -80, -70, -72
+    tx: txq:0, ps:0, tx_stat_q:0,
+        tx dma:900, total tx:897, retry:1089, tx lost:19, tx err:0
+    rx: frms:1027, data:845
+    throughput: tx: 1.29 Mbps, rx: 96.44 Kbps
+    max gain:7
+sta:2c:2b:db:9c:dd:88, aid:0, rssi:-62, evm:-18, tx frm type:*3, tx mcs:*4, sgi:1, freq offset:-1403
+    ifidx:0, MAC:c8:55:70:0f:be:68
+
+--------------------
+[1455087]inteface1 find new bss: b6:a7:f1:bb:ad:30-
+[1455094]inteface1 find new bss: be:a7:f1:bb:ad:30-SINGTEL-EB80_MLO
+[1455379]ip:192.168.4.99  freemem:28024,total skb:14760 skb free tx:11648,skb free rx:11808
+the current time is 2026_11_07 13:31:58
+[1456049]tx_status: total:194, retry:247, lost:8
+[1456363]inteface1 find new bss: 42:78:95:53:53:38-
+[1457049]tx_status: total:150, retry:249, lost:8
+[JPG_SIZE][JPG0] frames=100 avg=15953 min=15868 max=16024 overmax=0 qt=0x7 dqt=6
+[1458049]tx_status: total:177, retry:298, lost:8
+[1459049]tx_status: total:205, retry:239, lost:6
+[1459205][31m[p2plistenThreadProc:1167] p2p handle is -3 [HL_ERROR_TIME_OUT]
+[0mP2PJNI  :qwe..._sess_create_new_sock()  start p2pRecv 
+P2PJNI  :qwe..._sess_create_new_sock()  end p2pRecv 
+[40;32m[1459259]pthread is not exist!
+[0m--------------------
+local:c8:55:70:0f:be:68
+    bios:2, pack:8 
+    pwr idx: 0
+    chip-temperature: 74
+    freq:2412, bg_rssi:-87
+    cca: -77, -67, -69
+    tx: txq:0, ps:0, tx_stat_q:0,
+        tx dma:885, total tx:888, retry:1250, tx lost:36, tx err:0
+    rx: frms:1067, data:815
+    throughput: tx: 1.25 Mbps, rx: 92.96 Kbps
+    max gain:7
+sta:2c:2b:db:9c:dd:88, aid:0, rssi:-62, evm:-20, tx frm type:*3, tx mcs:*3, sgi:1, freq offset:519
+    ifidx:0, MAC:c8:55:70:0f:be:68
+
+--------------------
+[1460499]ip:192.168.4.99  freemem:37652,total skb:14760 skb free tx:11648,skb free rx:11808
+the current time is 2026_11_07 13:32:03
+[1460667]inteface1 find new bss: 46:78:95:53:53:38-
+[1461479]inteface1 find new bss: 3c:78:95:53:53:38-Fadzli
+[1461693][31m[CZ_P2P_JsonSendBackEx:1731] {
+	"cmd":	111,
+	"result":	0
+},len=29
+[0m[1462049]tx_status: total:138, retry:80, lost:1
+[1463049]tx_status: total:1, retry:0, lost:0
+[1464049]tx_status: total:3, retry:0, lost:0
+[1464310]inteface1 find new bss: be:a7:f1:bb:ad:30-SINGTEL-EB80_MLO
+P2PJNI  :_dev_recv_alive  cmd:34 
+P2PJNI  :_dev_recv_alive  cmd:34 
+--------------------
+local:c8:55:70:0f:be:68
+    bios:2, pack:8 
+    pwr idx: 0
+    chip-temperature: 68
+    freq:2412, bg_rssi:-88
+    cca: -78, -68, -70
+    tx: txq:0, ps:0, tx_stat_q:0,
+        tx dma:337, total tx:337, retry:146, tx lost:2, tx err:0
+    rx: frms:602, data:333
+    throughput: tx: 493.64 Kbps, rx: 40.07 Kbps
+    max gain:7
+sta:2c:2b:db:9c:dd:88, aid:0, rssi:-58, evm:-21, tx frm type:*3, tx mcs:*4, sgi:1, freq offset:508
+    ifidx:0, MAC:c8:55:70:0f:be:68
+
+--------------------
+[JPG_SIZE][JPG0] frames=100 avg=15493 min=14856 max=15996 overmax=0 qt=0xa dqt=6
+[1465620]ip:192.168.4.99  freemem:59956,total skb:14760 skb free tx:11648,skb free rx:11808
+the current time is 2026_11_07 13:32:08
+[1467049]tx_status: total:1, retry:0, lost:0
+P2PJNI  :_dev_recv_alive  cmd:34 
+P2PJNI  :qwe..._dev_recv_alive() 心跳都回来了 alloc_relay=0 one_svr=0 force_one_svr=0 force_tcp=0 state=6 nat=0 idx=2 svr_alive_arrhythmia_cnt=0 bw_out=11016 bw_in=0 
+[1468049]tx_status: total:2, retry:0, lost:0
+[1469049]tx_status: total:4, retry:6, lost:0
+--------------------
+local:c8:55:70:0f:be:68
+    bios:2, pack:8 
+    pwr idx: 0
+    chip-temperature: 67
+    freq:2412, bg_rssi:-91
+    cca: -81, -71, -73
+    tx: txq:0, ps:0, tx_stat_q:0,
+        tx dma:11, total tx:11, retry:7, tx lost:0, tx err:0
+    rx: frms:240, data:15
+    throughput: tx: 952 bps, rx: 1.74 Kbps
+    max gain:7
+sta:2c:2b:db:9c:dd:88, aid:0, rssi:-57, evm:-25, tx frm type:*3, tx mcs:*4, sgi:1, freq offset:244
+    ifidx:0, MAC:c8:55:70:0f:be:68
+
+--------------------
+[1470698]inteface1 find new bss: 42:78:95:53:53:38-
+[1470740]ip:192.168.4.99  freemem:59956,total skb:14760 skb free tx:11648,skb free rx:11808
+the current time is 2026_11_07 13:32:13
+[1472049]tx_status: total:3, retry:0, lost:0
+[JPG_SIZE][JPG0] frames=100 avg=14976 min=14900 max=15072 overmax=0 qt=0xa dqt=6
+[1473049]tx_status: total:1, retry:0, lost:0
+[1474049]tx_status: total:4, retry:0, lost:0
+--------------------
+local:c8:55:70:0f:be:68
+    bios:2, pack:8 
+    pwr idx: 0
+    chip-temperature: 67
+    freq:2412, bg_rssi:-87
+    cca: -77, -67, -69
+    tx: txq:0, ps:0, tx_stat_q:0,
+        tx dma:11, total tx:11, retry:5, tx lost:0, tx err:0
+    rx: frms:243, data:11
+    throughput: tx: 912 bps, rx: 1.25 Kbps
+    max gain:7
+sta:2c:2b:db:9c:dd:88, aid:0, rssi:-60, evm:-20, tx frm type:*3, tx mcs:*4, sgi:1, freq offset:-772
+    ifidx:0, MAC:c8:55:70:0f:be:68
+
+--------------------
